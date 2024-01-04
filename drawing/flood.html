@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flood Fill Simulation</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script>
+        // Get the canvas element
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Define the fill color
+        const fillColor = 'blue';
+
+        // Define the canvas size and pixel size
+        const canvasSize = 500;
+        const pixelSize = canvasSize / 10;
+
+        // Create the grid
+        const grid = [];
+        for (let i = 0; i < 10; i++) {
+            grid[i] = [];
+            for (let j = 0; j < 10; j++) {
+                grid[i][j] = 'white';
+            }
+        }
+
+        // Function to draw the grid on the canvas
+        function drawGrid() {
+            for (let i = 0; i < 5; i++) {
+                for (let j = 0; j < 5; j++) {
+                    ctx.fillStyle = grid[i][j];
+                    ctx.fillRect(i * pixelSize, j * pixelSize, pixelSize, pixelSize);
+                }
+            }
+        }
+
+        // Function to perform flood fill
+        function floodFill(x, y, targetColor, newColor) {
+            if (x < 0 || x >= 10 || y < 0 || y >= 10) {
+                return;
+            }
+
+            if (grid[x][y] !== targetColor) {
+                return;
+            }
+
+            grid[x][y] = newColor;
+
+            floodFill(x + 1, y, targetColor, newColor);
+            floodFill(x - 1, y, targetColor, newColor);
+            floodFill(x, y + 1, targetColor, newColor);
+            floodFill(x, y - 1, targetColor, newColor);
+        }
+
+        // Event listener for mouse click
+        canvas.addEventListener('click', function(event) {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+
+            const x = Math.floor(mouseX / pixelSize);
+            const y = Math.floor(mouseY / pixelSize);
+
+            const targetColor = grid[x][y];
+
+            floodFill(x, y, targetColor, fillColor);
+
+            drawGrid();
+        });
+
+        // Initial draw of the grid
+        drawGrid();
+    </script>
+</body>
+</html>

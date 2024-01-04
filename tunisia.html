@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tunisia Flag</title>
+    <style></style>
+  </head>
+  <body>
+    <h1>Guess the Correct Flag</h1>
+    <br />
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Tunisia.svg"
+      alt=""
+      width="300"
+      height="200"
+    />
+    <canvas id="tunisia-flag" width="300" height="200"></canvas>
+    <script src="./algo.js"></script>
+    <script>
+      const canvas = document.getElementById("tunisia-flag");
+      const ctx = canvas.getContext("2d");
+
+      // Draw red background
+      ctx.fillStyle = "#e70013";
+      boundaryFill(0, 0, [231, 0, 19, 255], [231, 0, 19, 255]);
+
+      // Draw white circle
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath();
+      ctx.arc(canvas.width / 2, canvas.height / 2, 50, 0, 2 * Math.PI);
+      ctx.fill();
+
+      // Draw red circle
+      ctx.fillStyle = "#e70000";
+      ctx.beginPath();
+      ctx.arc(canvas.width / 2, canvas.height / 2, 35, 0, 2 * Math.PI);
+      ctx.fill();
+
+      // Draw white circle
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath();
+      ctx.arc((canvas.width + 20) / 2, canvas.height / 2, 28, 0, 2 * Math.PI);
+      ctx.fill();
+
+      // Draw red star
+      ctx.fillStyle = "#e70013";
+      star((canvas.width + 23) / 2, (canvas.height + 34) / 2 - 18, 22, 8);
+      boundaryFill(
+        (canvas.width + 30) / 2,
+        (canvas.height + 40) / 2 - 18,
+        [231, 0, 19, 255],
+        [231, 0, 19, 255]
+      );
+
+    </script>
+  </body>
+</html>

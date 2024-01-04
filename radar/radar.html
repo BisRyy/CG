@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Radar Chart Example</title>
+  </head>
+  <style>
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    #data {
+      border: 1px solid black;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    input {
+      width: 70px;
+    }
+
+    #team{
+      border: 1px solid black;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    table{
+      border: 1;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <canvas
+        id="radarChart"
+        width="640"
+        height="480"
+        style="border: 1px solid"
+      >
+      </canvas>
+      <div id="data">
+        <div>
+          <label for="datasetcount">How many datasets?</label>
+          <input
+            id="datasetcount"
+            type="number"
+            value="0"
+            onchange="handleChange()"
+            min="0"
+            max="10"
+          />
+          <br />
+          <label for="attributecount">How many atrributes per dataset?</label>
+          <input
+            id="attributecount"
+            type="number"
+            value="3"
+            onchange="handleChange()"
+            min="3"
+            max="10"
+          />
+          <table id="dataset"></table>
+        </div>
+        <div>
+          <button onclick="handleGenerate()">Generate Chart</button>
+          <button onclick="handleClear()">Clear Chart</button>
+        </div>
+      </div>
+    </div>
+    <div id="team">
+      <table>
+        <thead>
+          <th>
+            <td>Name</td>
+            <td>ID</td>
+          </th>
+          <tr>
+            <td>1</td>
+            <td>Ararsa Derese</td>
+            <td>ETS0152/13</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Bisrat Kebere</td>
+            <td>ETS0306/13</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Biruk Mesfin</td>
+            <td>ETS0290/13</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Biyaol Mesay</td>
+            <td>ETS0309/13</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Dawit Berihun</td>
+            <td>ETS0361/13</td>
+          </tr>
+
+        </thead>
+        <tbody id="datasettable"></tbody>
+      </table>
+    </div>
+    <script src="code.js"></script>
+  </body>
+</html>

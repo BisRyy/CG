@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <h1> Drawing</h1>
+  <canvas
+    id="canvas"
+    class="myCanvas"
+    width="440"
+    height="280"
+    style="border: 1px solid red"
+  ></canvas>
+  <br />
+
+  <select id="selection" >
+    <option value="1" >DDA Line</option>
+    <option value="2" >Bresenham Line</option>
+    <option value="3" >Midpoint Circle</option>
+    <option value="4" >Bresenham Circle</option>
+    <option value="5" >Four Connected</option>
+    <option value="6" >Eight Connected</option>
+    <option value="7"  >Boundary Fill</option>
+    <option value="8" selected>Flood Fill</option>
+  </select>
+  <div class="options">
+    <input step="10" value="10" type="number" id="X1" placeholder="X1">
+    <input step="10" value="100" type="number" id="X2" placeholder="X2">
+    <input step="10" value="10" type="number" id="Y1" placeholder="Y1">
+    <input step="10" value="100" type="number" id="Y2" placeholder="Y2">
+    <input step="10" value="red" type="color" id="colorselector" onchange="draw()">
+    <input type="button" id="clear" value="clear" onclick="clearCanvas()">
+    <input type="button" id="button" value="Draw" onclick="draw()">
+  </div>
+
+  <br />
+  <script src="./index.js"></script>
+  <script src="./calculate.js"></script>
+</body>
+</html>

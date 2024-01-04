@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Turkey Flag</title>
+    <style></style>
+  </head>
+  <body>
+    <h1>By Bisrat Kebere - ETS0306/13</h1>
+    <br />
+    <canvas id="turkey-flag" width="300" height="200"></canvas>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg"
+      alt=""
+      width="300"
+      height="200"
+    />
+    <script src="./algo.js"></script>
+    <script>
+      const canvas = document.getElementById("turkey-flag");
+      const ctx = canvas.getContext("2d");
+
+      // Draw red background
+      ctx.fillStyle = "#e70013";
+      boundaryFill(0, 0, [231, 0, 19, 255], [231, 0, 19, 255]);
+
+      // // Draw white circle
+      ctx.fillStyle = "#ffffff";
+      bresenhamCircle(50, canvas.width / 2 - 40, canvas.height / 2);
+
+      boundaryFill(
+        canvas.width / 2,
+        canvas.height / 2,
+        [255, 255, 255, 255],
+        [255, 255, 255, 255]
+      );
+
+      // // Draw red circle
+      ctx.fillStyle = "#e70013";
+      bresenhamCircle(41, (canvas.width + 24) / 2 - 40, canvas.height / 2);
+      initialColor = ctx.getImageData(
+        canvas.width / 2,
+        canvas.height / 2,
+        1,
+        1
+      ).data;
+      floodFill(canvas.width / 2, canvas.height / 2, "#e70013", initialColor);
+
+      // Draw white star
+      ctx.fillStyle = "#ffffff";
+      star((canvas.width + 40) / 2, (canvas.height + 33) / 2 - 18, 25, 10);
+      boundaryFill(
+        (canvas.width + 20) / 2,
+        (canvas.height + 40) / 2 - 18,
+        [255, 255, 255, 255],
+        [255, 255, 255, 255]
+      );
+    </script>
+  </body>
+</html>

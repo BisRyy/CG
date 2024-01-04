@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Radar Chart Example</title>
+  </head>
+  <style>
+    .container {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    #data {
+      border: 1px solid black;
+      padding: 10px;
+    }
+
+  </style>
+  <body>
+    <div class="container">
+      <canvas
+        id="radarChart"
+        width="640"
+        height="480"
+        style="border: 1px solid"
+      >
+      </canvas>
+      <div id="data">
+        <label for="datasetcount">How many datasets?</label>
+        <input
+          id="datasetcount"
+          type="number"
+          value="1"
+          onchange="handleChange()"
+          min="1"
+          max="10"
+        />
+        <br />
+        <label for="attributecount">How many atrributes per dataset?</label>
+        <input
+          id="attributecount"
+          type="number"
+          value="3"
+          onchange="handleChange()"
+          min="3"
+          max="10"
+        />
+        <table id="dataset">
+            <thead>
+                <th>
+                    <td>Atribute</td>
+                    <td>Atribute</td>
+                    <td>Atribute</tr>
+                </th>
+            </thead>
+        </table>
+      </div>
+    </div>
+    <button onclick="handleGenerate()">
+        Generate Chart
+    </button>
+    <script src="sec.js"></script>
+  </body>
+</html>
